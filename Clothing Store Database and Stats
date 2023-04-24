@@ -1,0 +1,34 @@
+--Create a clothing store database 
+
+CREATE TABLE clothing( id INTEGER primary key, item TEXT, color TEXT, quantity INTEGER, price INTEGER);
+INSERT INTO clothing VALUES
+
+
+( 1, 'Dresses', 'Navy', 13, 17),
+(2, 'Jeans', 'Black', 6, 25),
+(3, 'Leggings', 'Black', 6, 13),
+(4, 'Blouses', 'Pink', 7, 18),
+(5, 'Jumpsuits', 'Black', 17, 13),
+(6, 'Undershirts', 'White', 8, 8),
+(7, 'Cardigans', 'Navy', 5, 25),
+(8,'Socks','Yellow',5, 6),
+(9, 'Jackets', 'Green', 7, 18),
+(10, 'T-shirts', 'Purple', 6, 10),
+(11, 'Sweaters', 'Beige', 13, 28),
+(12, 'Shorts','White', 25, 15),
+(13, 'Skirts','Green',17, 32),
+(14, 'Pajamas','Yellow', 2, 15),
+(15,'Trousers','Purple',24, 42);
+
+--Display the database by SUM of clothing items
+
+SELECT * FROM clothing;
+SELECT SUM(quantity) FROM clothing;
+
+--Display the database ordered by descending price. 
+
+SELECT* FROM clothing ORDER BY price desc;
+
+--Display of items with a stock greater than or equal to 10 
+
+SELECT *FROM clothing WHERE quantity >10;
