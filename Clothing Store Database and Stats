@@ -22,7 +22,6 @@ INSERT INTO clothing VALUES
 
 --Display the database by SUM of clothing items
 
-SELECT * FROM clothing;
 SELECT SUM(quantity) FROM clothing;
 
 --Display the database ordered by descending price. 
@@ -32,3 +31,5 @@ SELECT* FROM clothing ORDER BY price desc;
 --Display of items with a stock greater than or equal to 10 
 
 SELECT *FROM clothing WHERE quantity >10;
+
+SELECT AVG(quantity) FROM clothing;
