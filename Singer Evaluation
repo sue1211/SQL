@@ -1,0 +1,53 @@
+CREATE TABLE singers (id integer primary key, name TEXT, top_song TEXT, age INTEGER, martial_status TEXT, albums INTEGER);
+INSERT INTO singers VALUES (1, "Taylor Swift", "Shake it off", "33", "Single", "10");
+INSERT INTO singers VALUES (2, "Justin Beiber", "Sorry","29", "Married","7");
+INSERT INTO singers VALUES (3, "Post Malone", "Congradulations", "27", "Single", "4");
+INSERT INTO singers VALUES (4, "Beyonce", "Single Ladies", "41", "Married", "7");
+INSERT INTO singers VALUES (5, "Ed Sheeran", "Thinking Out Loud","32", "Married", "6");
+INSERT INTO singers VALUES (6, "Rihanna", "Umbrella","35", "Single", "8");
+INSERT INTO singers VALUES (7, "The Weeknd", "Blinding Lights","33", "Single", "5");
+
+CREATE TABLE origins (id integer primary key, birthcity TEXT, birthcountry TEXT);
+
+INSERT INTO origins VALUES (1, "Pennsylvania", "United States");
+INSERT INTO origins VALUES( 2, "London", "Canada");
+INSERT INTO origins VALUES (3, "Syracuse", "United States"); 
+INSERT INTO origins VALUES (4, "Houston", "United States");
+INSERT INTO origins VALUES (5, "Halifax", "United Kingdom");
+INSERT INTO origins VALUES (6, "Saint Michael", "Barbados");
+INSERT INTO origins VALUES (7, "Scarborough", "Canada");
+
+CREATE TABLE grammys (id integer primary key, grammys_won INTEGER);
+
+INSERT INTO grammys VALUES(1, "10");
+INSERT INTO grammys VALUES (2, "2");
+INSERT INTO grammys VALUES (4,"30");
+INSERT INTO grammys VALUES (5, "4");
+INSERT INTO grammys VALUES (6, "9");
+INSERT INTO grammys VALUES (7, "4");
+
+
+SELECT * FROM singers 
+JOIN origins 
+ON singers.id=origins.id;
+
+SELECT singers.name, singers.martial_status, origins.birthcountry 
+FROM singers 
+LEFT OUTER JOIN origins 
+ON singers.id=origins.id;
+SELECT * FROM grammys;
+
+SELECT singers.name, singers.age, grammys.grammys_won 
+FROM singers 
+LEFT OUTER JOIN grammys 
+ON singers.id=grammys.id;
+
+SELECT singers.name, singers.albums, origins.birthcountry 
+FROM singers
+LEFT OUTER JOIN origins 
+ON singers.id=origins.id
+WHERE origins.birthcountry="United States" AND albums >=7
+ORDER BY albums;
+
+SELECT name, AVG(age) FROM singers;
+
