@@ -37,7 +37,6 @@ WHERE popularity >= 90
 ORDER BY popularity 
 LIMIT 10;
 
-What is the average danceability by artist and track?
 
 
 
