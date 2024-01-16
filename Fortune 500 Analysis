@@ -59,34 +59,45 @@ VALUES
 Analysis 
 
 
-Use of "Having" operator to filter the name of companies with a large employee count.
-
-SELECT company_name, employees, industry
+Use of "Having" operator to filter the name of companies with an paid time off days great than 15. 
+SELECT industry, paid_time_off_days
 FROM fortune_companies 
 GROUP BY industry 
-HAVING employees >=2000
-ORDER BY employees asc;
+HAVING paid_time_off_days >15
+ORDER BY paid_time_off_days desc;
 
-Use of "And" operator to filter the highest grossing company revenues and their related paid time off 
 
-SELECT company_name, revenue, paid_time_off_days 
-FROM fortune_companies 
-WHERE revenue >300
-AND paid_time_off_days>15
-ORDER BY revenue desc; 
+Use of "And" operator to filter the companies with healthcare benefits and a miniumum count of 12 week maternity leave. 
 
-Use of "Aggregate" function to pull the company with the maximum amount of maternity leave days. 
+SELECT company_name, healthcare_benefits, maternity_leave_weeks
+FROM fortune_companies
+WHERE healthcare_benefits >=1
+AND maternity_leave_weeks >12
+ORDER BY maternity_leave_weeks asc;
+
+Use of "Aggregate" max function to pull the company with the maximum amount of maternity leave days. 
 
 SELECT MAX(maternity_leave_weeks),company_name
 FROM fortune_companies;
 
+Use of "Aggregate" sum function to pull the total number of employees within the given industries. 
+
+SELECT SUM(employees) AS employee_count, industry 
+FROM fortune_companies
+GROUP By industry
+ORDER BY employee_count; 
+
 Use of "Case" to classify and filter revenue earnings per company. 
 
 SELECT company_name, revenue,
-CASE WHEN revenue >300 THEN "Exceeds Criteria"
-WHEN revenue >200 THEN "Meets Criteria"
-WHEN revenue >150 THEN "Below Criteria"
-ELSE "Needs improvement"
-END AS revenue_status
+CASE 
+WHEN revenue >=350 THEN 'exceeds expectations'
+WHEN revenue >=200 THEN 'meets expectations'
+WHEN revenue >=140 THEN 'below expectations'
+ELSE "loss" 
+END AS 'profitibily measure'
 FROM fortune_companies
 ORDER BY revenue desc;
+
+
+
